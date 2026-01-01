@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/TON_USER/Projet-DevOps-ImadLalouchi.git'
+                    url: 'https://github.com/ilalo20/Projet-DevOps-ImadLalouchi.git'
             }
         }
 
@@ -20,14 +20,17 @@ pipeline {
                 archiveArtifacts artifacts: '**/target/*.jar'
             }
         }
+    }
 
-        stage('Deploy') {
-            when {
-                success()
-            }
-            steps {
-                echo "Déploiement réussi"
-            }
+    post {
+        success {
+            echo "Déploiement réussi ! ✅"
+            // Ici tu peux ajouter des commandes de déploiement réelles, par exemple :
+            // sh 'docker build -t mon-app .'
+            // sh 'docker run -d --name mon-app mon-app'
+        }
+        failure {
+            echo "Le build a échoué ❌"
         }
     }
 }
