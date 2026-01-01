@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven-3.9.2'  // Assure-toi de configurer Maven dans Jenkins (Manage Jenkins -> Global Tool Configuration)
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -25,9 +29,6 @@ pipeline {
     post {
         success {
             echo "Déploiement réussi ! ✅"
-            // Ici tu peux ajouter des commandes de déploiement réelles, par exemple :
-            // sh 'docker build -t mon-app .'
-            // sh 'docker run -d --name mon-app mon-app'
         }
         failure {
             echo "Le build a échoué ❌"
