@@ -19,4 +19,6 @@ jobs:
         distribution: 'temurin'
 
     - name: Build with Maven
-      run: mvn clean package
+      run: |
+        cd hello-devops
+        mvn clean package
