@@ -9,9 +9,10 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/ilalo20/Projet-DevOps-ImadLalouchi.git'
+                url: 'https://github.com/ilalo20/Projet-DevOps-ImadLalouchi.git'
             }
         }
+
 
         stage('Build & Test') {
             steps {
