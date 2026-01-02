@@ -35,7 +35,8 @@ pipeline {
             slackSend(
                 channel: '#jenkins',
                 color: 'good',
-                message: "✅ Build SUCCESS : ${env.JOB_NAME} #${env.BUILD_NUMBER}"
+                message: "✅ Build SUCCESS : ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                tokenCredentialId: 'slack-webhook'
             )
         }
 
@@ -43,7 +44,8 @@ pipeline {
             slackSend(
                 channel: '#jenkins',
                 color: 'danger',
-                message: "❌ Build FAILED : ${env.JOB_NAME} #${env.BUILD_NUMBER}"
+                message: "❌ Build FAILED : ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                tokenCredentialId: 'slack-webhook'
             )
         }
     }
