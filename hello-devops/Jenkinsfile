@@ -34,7 +34,6 @@ pipeline {
                 channel: '#jenkins',
                 color: 'good',
                 message: "✅ Build SUCCESS : ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                tokenCredentialId: 'slack-webhook' // ID du secret que tu as créé
             )
         }
 
@@ -43,7 +42,6 @@ pipeline {
                 channel: '#jenkins',
                 color: 'danger',
                 message: "❌ Build FAILED : ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                tokenCredentialId: 'slack-webhook'
             )
         }
     }
