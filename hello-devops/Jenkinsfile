@@ -39,7 +39,6 @@ pipeline {
                 tokenCredentialId: 'slack-webhook'
             )
         }
-
         failure {
             slackSend(
                 channel: '#jenkins',
@@ -48,5 +47,4 @@ pipeline {
                 tokenCredentialId: 'slack-webhook'
             )
         }
-    }
 }
