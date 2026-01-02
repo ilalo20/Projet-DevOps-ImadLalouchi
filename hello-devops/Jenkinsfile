@@ -2,17 +2,16 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven-3.9.2'  // Assure-toi de configurer Maven dans Jenkins (Manage Jenkins -> Global Tool Configuration)
+        maven 'Maven-3.9.2' // Configuré dans Jenkins : Manage Jenkins → Global Tool Configuration
     }
 
     stages {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                url: 'https://github.com/ilalo20/Projet-DevOps-ImadLalouchi.git'
+                    url: 'https://github.com/ilalo20/Projet-DevOps-ImadLalouchi.git'
             }
         }
-
 
         stage('Build & Test') {
             steps {
@@ -21,7 +20,6 @@ pipeline {
                 }
             }
         }
-
 
         stage('Archive') {
             steps {
@@ -36,9 +34,10 @@ pipeline {
                 channel: '#jenkins',
                 color: 'good',
                 message: "✅ Build SUCCESS : ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                tokenCredentialId: 'slack-webhook'
+                tokenCredentialId: 'slack-webhook' // ID du secret que tu as créé
             )
         }
+
         failure {
             slackSend(
                 channel: '#jenkins',
@@ -47,4 +46,5 @@ pipeline {
                 tokenCredentialId: 'slack-webhook'
             )
         }
+    }
 }
