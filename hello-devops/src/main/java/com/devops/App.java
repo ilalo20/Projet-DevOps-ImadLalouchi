@@ -11,6 +11,7 @@ public class App
 
         System.out.println( "Projet Dev-Ops" );
         System.out.println("Bonjour et bon courage dans votre projet DevOps - Build Test");
+        System.out.println( "Test nouveau pour notif sur slack // Dev-Ops" );
 
     }
 }
