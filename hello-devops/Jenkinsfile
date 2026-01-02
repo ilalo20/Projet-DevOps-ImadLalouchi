@@ -32,10 +32,19 @@ pipeline {
 
     post {
         success {
-            echo "Déploiement réussi ! ✅"
+            slackSend(
+                channel: '#jenkins',
+                color: 'good',
+                message: "✅ Build SUCCESS : ${env.JOB_NAME} #${env.BUILD_NUMBER}"
+            )
         }
+
         failure {
-            echo "Le build a échoué ❌"
+            slackSend(
+                channel: '#jenkins',
+                color: 'danger',
+                message: "❌ Build FAILED : ${env.JOB_NAME} #${env.BUILD_NUMBER}"
+            )
         }
     }
 }
